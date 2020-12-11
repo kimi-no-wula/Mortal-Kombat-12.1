@@ -40,6 +40,10 @@ def window():
         win.blit(im, (g2_x, g2_y))
     if not g2_in_jump or g2_meter_jump == 1 or g2_meter_jump == 21:
         aC1 += 1
+    if g2_meter_jump == 1:
+        aC1 = 2
+    elif g2_meter_jump == 20:
+        aC1 = 5
     pygame.display.update()
 
 
@@ -100,7 +104,6 @@ if __name__ == '__main__':
         elif g2_stand and not g2_in_jump:
             g2_anim = gamer_2.stand
         else:
-            aC1 = 0
             g2_stand = True
 
 

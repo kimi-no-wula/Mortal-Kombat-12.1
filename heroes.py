@@ -1,5 +1,4 @@
 import pygame
-import pyganim
 import os
 
 
