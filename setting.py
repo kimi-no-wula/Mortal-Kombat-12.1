@@ -1,5 +1,6 @@
 import pygame
 import heroes
+import random
 
 # размер окна
 W, H = 1000, 500
@@ -55,8 +56,7 @@ g2_y = H - g2_h - ry
 
 
 # время
-clock_ = 90
-
+clock_ = 30
 # условие работы основного цикла
 run = True
 
@@ -67,29 +67,36 @@ g1_k_jump = gamer_1.k_jump
 g2_k_jump = gamer_2.k_jump
 
 # персонаж
-g1_stand = gamer_1.stand
-g2_stand = gamer_1.stand
+g1_stand = True
+g2_stand = True
 
 all_sprites = pygame.sprite.Group()
 all_sprites.add(gamer_1)
 all_sprites.add(gamer_2)
 
 # фон
-fon = pygame.image.load('fons/pygame_bg_2.jpg')
-fon = pygame.transform.scale(fon, (W, H))
+fon1 = [pygame.image.load('fons/pygame_bg.jpg'),
+    pygame.image.load('fons/pygame_bg_1.jpg'),
+    pygame.image.load('fons/pygame_bg_2.jpg')]
+fon = pygame.transform.scale(pygame.transform.scale(random.choice(fon1), (W, H)), (W, H))
 
 # окно
 pygame.init()
-win = pygame.display.set_mode((W, H))
+win = pygame.display.set_mode((W, H), pygame.RESIZABLE, pygame.SCALED)
 pygame.display.set_caption('mk12')
 
 # анимация
 g1_kAn_x = 0
 g1_kAn_y = 0
-g1_anim = g1_stand
+g1_anim = gamer_1.stand
 g1_meter_jump = 0
 
 g2_kAn_x = 0
-g2_kAn_x = 0
-g2_anim = g2_stand
+g2_kAn_y = 0
+g2_anim = gamer_2.stand
 g2_meter_jump = 0
+
+
+
+gamer_position = True # True - игрок 1 справа , игрок 2 слева
+                      # False - игрок 2 справа , игрок 1 слева
