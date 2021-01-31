@@ -108,43 +108,13 @@ def keyb_go(key1, key2, x, W, w, rx, stay_side, speed, stand, in_jump, anim, gam
     return [x, stay_side, stand, in_jump, anim, go]
 
 
-def keyboard1(in_jump, key3, stand, anim, aC, meter_jump, jump_coeff, jump_speed, y, k_jump, H, h, ry, gamer):
-    if not in_jump:
-        if key3:
-            in_jump = True
-            stand = False
-            anim = gamer.jump
-            aC = 0
-    else:
-        meter_jump += 1
-        if jump_coeff >= 0 - jump_speed:
-            if jump_coeff < 0:
-                y += (jump_coeff ** 2) / k_jump
-            elif jump_coeff >= 0:
-                y -= (jump_coeff ** 2) / k_jump
-            jump_coeff -= 1
-        elif y != H - h - ry:
-            y += (jump_coeff ** 2) / k_jump
-            if y > H - h - ry:
-                y = H - h - ry
-        else:
-            in_jump = False
-            jump_coeff = jump_speed
-            aC = 0
-            anim = gamer.stand
-            stand = True
-            meter_jump = 0
-    return [in_jump, stand, anim, aC, meter_jump, y]
-
-
 # основной цикл и, получается, основа всей программы
 if __name__ == '__main__':
     font = pygame.font.SysFont("Arial", 18)
     clock = pygame.time.Clock()
 
     while run:
-        print(g1_y, g2_y)
-        num_iteration += 1
+
         clock.tick(clock_)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
