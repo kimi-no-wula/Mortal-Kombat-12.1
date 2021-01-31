@@ -21,4 +21,3 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode((600,  600), pygame.RESIZABLE)
 
     fps = 90
-
